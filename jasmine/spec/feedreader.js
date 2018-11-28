@@ -86,6 +86,7 @@ $(function() {
                  });
              });
     /* TODO: Write a new test suite named "Initial Entries" */
+    describe('Initial Entries', function() {
 
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
@@ -93,6 +94,21 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
+         var newfeed;
+
+               //this test to check if the new feed loaded by loadFeed
+               beforeEach(function(done) {
+                   loadFeed(0, function() {
+                       newfeed = $('.feed').html();
+                       loadFeed(1, done);
+                   });
+               });
+
+               //this test to check the loading feed is not the same as before
+               it('has been loaded', function(){
+                   expect($('.feed').html()).not.toEqual(newfeed);
+               });
+           });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
 
