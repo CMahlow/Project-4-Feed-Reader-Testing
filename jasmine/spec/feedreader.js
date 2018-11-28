@@ -31,11 +31,12 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
-          it ('each has url', function() {
-            for(let feed of allFeeds) {
-              expect(feed.url).teBeDefined();
-              expect(feed.url.constuctor).toBe(String);
-              expect(feed.url.length).not.toBe(0);
+         it('URL is defined and not empty', function() {
+              allFeeds.forEach(function(feed) {
+                  feedLink = feed.url;
+                  expect(feedLink).toBeDefined();
+
+                  expect(feedLink.length).not.toBe(0);
             }
           });
 
